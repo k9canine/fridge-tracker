@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import {
   API_KEY,
   AUTH_DOMAIN,
@@ -28,15 +28,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const database = getDatabase(app);
+const database = getFirestore(app);
 
-function writeUserData(userId, name, email, imageUrl) {
-  set(ref(database, "users/" + userId), {
-    username: name,
-    email: email,
-    profile_picture: imageUrl,
-  });
-  console.log("hello");
+// testing that the db works!
+async function addToDB() {
+  try {
+    const docRef = await addDoc(collection(database, "users"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815,
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 }
 
-writeUserData(2, "jenna", "katherine", "asdgljglks");
+addToDB();
