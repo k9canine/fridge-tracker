@@ -13,9 +13,11 @@
     "@react-native-material/core": "^1.3.7",
     "expo": "~45.0.0",
     "expo-status-bar": "~1.3.0",
+    "firebase": "^9.9.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
+    "react-native-dotenv": "^3.3.1",
     "react-native-web": "0.17.7"
   },
   "devDependencies": {
